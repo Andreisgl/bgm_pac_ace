@@ -268,7 +268,7 @@ def work_on_files():
 
             print('File: ' + file_list[i] + '\nINDEX: ' + str(i))
             for g in range(len(PARAMETER_LIST)): # Display current values for index.
-                print(PARAMETER_LIST[g] + ': ' + fdl_parameter_parser(i)[g])
+                print(PARAMETER_LIST[g] + ': ' + fdl_parameter_parser(i, file_data_list)[g])
                 
             manipulate_file(file_list[i], '', ACZ_RADIO_ARG_VALUES, 0)
             if work_mode == 1: # WRITE
@@ -284,13 +284,17 @@ def work_on_files():
             
             
 
-
-def fdl_parameter_parser(fdl_index): # Checks a file_data_list index and parse it's data.
+# Checks a file_data_list like index and parse it's data.
+    # Parameters:
+        # fdl_index: Index of the list to be checked.
+        # fdl_list: List to be checked. Having this parameter explicit allows
+            # usage on the recursive checking in "separate_by_parameter()" 
+def fdl_parameter_parser(fdl_index, fdl_list): 
     global PARAMETER_LIST
     parameter_ammount = len(PARAMETER_LIST)
     storage = []
     str_data = ''
-    str_data = file_data_list[fdl_index]
+    str_data = fdl_list[fdl_index]
     for i in range(parameter_ammount): # Define size of list
         storage.append('')
     for i in range(parameter_ammount):
@@ -319,7 +323,7 @@ def check_file_data_list(): # Checks 'save_file_data_list' and creates an index 
         parameter_value_buffer.append('')
    
     for i in range(number_of_files): # Check all files in file_data_list
-        parameter_value_buffer = fdl_parameter_parser(i)
+        parameter_value_buffer = fdl_parameter_parser(i, file_data_list)
         for c in range(number_of_parameters): # Check data for all parameters in PARAMETER_LIST
             if not parameter_value_buffer[c]: # If this parameter is empty:
                 parameter_validation_buffer[c] = 0
@@ -409,6 +413,6 @@ def separate_by_parameter(): # Separates files by chosen parameter.
 
 init_project()
 
-separate_by_parameter()
-# work_on_files()
+# separate_by_parameter()
+work_on_files()
 save_project()
