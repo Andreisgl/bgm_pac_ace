@@ -342,7 +342,7 @@ def check_file_data_list(): # Checks 'save_file_data_list' and creates an index 
             fdl_validation_index[i] = 2
 
 
-def separate_by_parameter(): # Separates files by chosen parameter.    
+def separate_by_parameter(fdl_list): # Separates files by chosen parameter.    
     global PARAMETER_LIST
     global fdl_validation_index
     reference_parameter = 0 # Parameter index in "PARAMETER_LIST" to be checked.
@@ -378,7 +378,7 @@ def separate_by_parameter(): # Separates files by chosen parameter.
     
     
     for i in range(number_of_files):
-        parameter_value_buffer = fdl_parameter_parser(i)[reference_parameter]
+        parameter_value_buffer = fdl_parameter_parser(i, fdl_list)[reference_parameter]
         
         # List all folders to be created:
         # If index is not empty:
@@ -400,7 +400,7 @@ def separate_by_parameter(): # Separates files by chosen parameter.
         if not os.path.exists(buffer_folder_path):
             os.mkdir(buffer_folder_path)
         for l in range(number_of_files):
-            parameter_value_buffer = fdl_parameter_parser(l)[reference_parameter]
+            parameter_value_buffer = fdl_parameter_parser(l, fdl_list)[reference_parameter]
             if parameter_value_buffer == parameter_value_index[p]:
                 shutil.copy(BASE_DIRECTORY + '/' + file_list[l], buffer_folder_path)
     
@@ -413,6 +413,6 @@ def separate_by_parameter(): # Separates files by chosen parameter.
 
 init_project()
 
-# separate_by_parameter()
-work_on_files()
+separate_by_parameter(file_data_list)
+# work_on_files()
 save_project()
