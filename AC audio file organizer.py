@@ -347,6 +347,13 @@ def separate_by_parameter(fdl_list): # Separates files by chosen parameter.
     global fdl_validation_index
     reference_parameter = 0 # Parameter index in "PARAMETER_LIST" to be checked.
 
+    # Local "file_list" and "file_data_list" like lists and files to be created for
+        # each folder.
+    fl = []
+    fdl = []
+    save_fl = []
+    save_fdl = []
+
     # List contains all parameter values in file for given parameter.
     #Creates a folder for each value, if not empty.
     parameter_value_index = []
