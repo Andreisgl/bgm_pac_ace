@@ -20,7 +20,7 @@ class ManipulateMode(Enum):
 
 BASE_DIRECTORY = 'files'
 
-EXTRACT_DIRECTORY = 'EXTRACT'
+EXTRACT_DIRECTORY = './EXTRACT'
 
 MAIN_METADATA_FILE = 'mainMeta.txt'  # Contains the names of all audio files to be worked with
 SAVE_FOLDER = 'Organizer Projects'
