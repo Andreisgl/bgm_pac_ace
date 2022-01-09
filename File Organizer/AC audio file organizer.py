@@ -20,7 +20,7 @@ class ManipulateMode(Enum):
 
 BASE_DIRECTORY = 'files'
 
-EXTRACT_DIRECTORY = 'BGM'
+EXTRACT_DIRECTORY = 'EXTRACT'
 
 MAIN_METADATA_FILE = 'mainMeta.txt'  # Contains the names of all audio files to be worked with
 SAVE_FOLDER = 'Organizer Projects'
@@ -138,10 +138,17 @@ def init_project(): # Initializes project name and savefile stuff. MUST BE FIRST
             print('Project already exists!')
             exit('Project already exists!')
 
-        # Copy extracted files to project folder
-        shutil.copytree(EXTRACT_DIRECTORY, BASE_DIRECTORY)
+        try:
+            # Copy extracted files to project folder
+            shutil.copytree(EXTRACT_DIRECTORY, BASE_DIRECTORY)
+        except FileNotFoundError:
+            print('EXTRACT folder does not exist! \nCreating EXTRACT folder...')
+            print('Please, insert files to be organized in the EXTRACT folder.')
+            os.mkdir(EXTRACT_DIRECTORY)
+            input('Press any key to continue...')
+            exit('EXTRACT folder does not exist.')
+
         number_of_files = len(os.listdir(BASE_DIRECTORY))
-        
         
 
         for f in os.listdir(BASE_DIRECTORY): # Lists all files to be worked with.
