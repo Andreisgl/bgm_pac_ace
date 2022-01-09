@@ -14,11 +14,6 @@ RESULTING_FILE_NAME = "BGM_TBL.acd"
 
 
 def write_tbl_from_pac():
-    if os.path.exists("BGM"):
-        shutil.rmtree("BGM")
-
-    os.mkdir("BGM")
-
     print(textwrap.fill("///INFO///: Extracting files, please wait...", width=72))
 
     offset_list = []

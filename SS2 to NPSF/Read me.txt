@@ -1,0 +1,38 @@
+///SS2 to NSPF "converter"
+========================== by death_the_d0g
+
+About:
+------
+A script that will take SS2 (Sony PS2 Compressed ADPCM) files and "convert them" to the audio format ACZ uses (NSPF, Namco Sound Production File?).
+
+Not a converter, this script will simply take a SS2 file, read its stream data, add a custom header then export it to the NSPF format so it can be read by the game.
+
+
+Requirements:
+-------------
+- Have Python version 3.8.5 or newer installed in your computer.
+
+- Your custom music files converted to the SS2 format.
+
+
+Usage:
+------
+Run the script and follow the instructions shown in the screen. Once you've input the required information the script will create a new NSPF file.
+
+Rename this file with the name of the track you want to replace and drop it in the BGM folder, then run the "ACZ BGMPAC repacker" to generate a new BGM.PAC file.
+
+
+Notes:
+------
+This script was intended to work with music files only. It might be possible to also mod other audio files such as voice lines but I don't guarantee it will work and I will neither offer support for this.
+
+
+Special Thanks:
+---------------
+BelkanLoyalist (@ Twitter and ModDB) for testing.
+
+
+Contact:
+--------
+death_the_d0g @ Twitter and ModDB
+Charles Charleston @ Youtube

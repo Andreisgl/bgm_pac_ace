@@ -127,13 +127,13 @@ def init_project(): # Initializes project name and savefile stuff. MUST BE FIRST
     BASE_DIRECTORY = PROJECT_NAME + '/' + BASE_DIRECTORY
     WORK_FOLDER = PROJECT_NAME + '/' + WORK_FOLDER
 
-    if not os.path.exists(WORK_FOLDER):
-        os.mkdir(WORK_FOLDER)
+    
     
     if IS_NEW_PROJECT:
         
         if not os.path.exists(PROJECT_NAME):
             os.mkdir(PROJECT_NAME)
+            
         else:
             print('Project already exists!')
             exit('Project already exists!')
@@ -173,6 +173,9 @@ def init_project(): # Initializes project name and savefile stuff. MUST BE FIRST
             print('Project not found!')
             input('Press any key to exit...')
             exit('Project not found')
+
+    if not os.path.exists(WORK_FOLDER):
+        os.mkdir(WORK_FOLDER)
     
 
 def save_project(): # Saves current project.
@@ -231,14 +234,17 @@ def work_on_files():
                                     # 0: Empty.
                                     # 1: Full.
                                     # 2: Incomplete.
+                                    # 3: ALL
         validity__status_checker = (int(input(
             'Validity Checker:\n\t 0: Check only empty indexes,\n\t 1: Check only complete indexes,\n\t 2: Check only incomplete indexes.\n')))
             
-        if not (0 <= validity__status_checker <= 2): # Invalid answer!
+        if not (0 <= validity__status_checker <= 3): # Invalid answer!
             print('Invalid input!')
             valid_answer = False
 
         else: # Valid answer!
+            if validity__status_checker == 3:
+                validity__status_checker = True
             valid_answer = True
     
     valid_answer = False
@@ -332,14 +338,16 @@ def check_file_data_list(): # Checks 'save_file_data_list' and creates an index 
         
         final_validation = 0
         # If all parameters are VALID:
-        if all( parameter_validation_buffer[i] == 1 for i in parameter_validation_buffer ):
+        if all( i == 1 for i in parameter_validation_buffer ):
             fdl_validation_index[i] = 1
         # If all parameters are INVALID:
-        elif all( parameter_validation_buffer[i] == 0 for i in parameter_validation_buffer ):
+        elif all( i == 0 for i in parameter_validation_buffer ):
             fdl_validation_index[i] = 0
         # If parameters are incomplete:
         else:
             fdl_validation_index[i] = 2
+
+    
 
 
 def separate_by_parameter(fdl_list): # Separates files by chosen parameter.    
