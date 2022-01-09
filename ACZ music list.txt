@@ -1,0 +1,59 @@
+Best viewed on Notepad with word wrap disabled or Notepad++.
+
+FILENAME                USED IN                                 NOTES
+--------                -------                                 ------
+0000_m01a.npsf          M01: Glacial Skies
+0001_m02a.npsf          M02: Annex
+0002_m03a.npsf          M03: The Round Table
+0003_m03b.npsf          M03: The Round Table - mission update
+0004_m04a.npsf          M04: Juggernaut
+0005_m05a.npsf          M05: Flicker of Hope
+0006_m06a.npsf          M06: Diapason
+0007_m06b.npsf          M06: Diapason - mission update
+0008_m07a.npsf          M07: Bastion
+0009_m08a.npsf          M08: Merlon
+0010_m08b.npsf          M08: Merlon - mission update
+0011_m09a.npsf          M09: Sword of Annihilation
+0012_m10a.npsf          M10: Mayhem
+0013_m10b.npsf          M10: Mayhem - mission update
+0014_m11a.npsf          M11: The Inferno
+0015_m12a.npsf          M12: The Stage of The Apocalypse
+0016_m12b.npsf          M12: Nuke sequence                      Ambient noise played during the nuke sequence. Doesn't loop.
+0017_m13a.npsf          M13: Lying in Deceit
+0018_m14a.npsf          M14: The Final Overture
+0019_m15a.npsf          M15: The Talon of Ruin
+0020_m15b.npsf          M15 - mission update
+0021_m16a.npsf          M16: The Demon of the Round Table
+0022_m16b.npsf          Unused                                  Beta version of GLACIAL SKIES
+0023_m17a.npsf          M17: Valley of Kings
+0024_m17b.npsf          M17: Valley of Kings - mission update
+0025_m18a.npsf          M18/MSP: ZERO/The Gauntlet             
+0026_gameover.npsf      Game Over                              
+0027_am01.npsf          Multiplayer stage 1                    
+0028_am02.npsf          Multiplayer stage 2                    
+0029_am03.npsf          Multiplayer stage 3                    
+0030_am04.npsf          Multiplayer stage 4                    
+0031_am05.npsf          Multiplayer stage 5                    
+0032_am06.npsf          Multiplayer stage 6                    
+0033_am07.npsf          Multiplayer stage 7                    
+0034_startup.npsf       Game start                             
+0035_title.npsf         Title screen                           
+0036_menu0.npsf                                                 Plays during the menu screen
+0037_menu1.npsf         Campaign menu                           
+0038_menu2.npsf                                                 Plays during the menu screen
+0039_select1.npsf       Aircraft select theme 1                 
+0040_select2.npsf       Aircraft select theme 2                 
+0041_select3.npsf       Aircraft select theme 3                 
+0042_select_vs.npsf     Multiplayer aircraft select theme       
+0043_briefing1.npsf     Briefing 1                              
+0044_briefing2.npsf     Briefing 2                              
+0045_briefing3.npsf     Briefing 3                              
+0046_shop.npsf          Hangar shop                             
+0047_result.npsf        Mission/campaign result screen          
+0048_select1.npsf                                               Duplicate of 0039_select1.npsf?
+0049_select2.npsf                                               Duplicate of 0040_select2.npsf?
+0310_m12c.npsf          M12 - mission update                    
+0311_m18ed.npsf         Final mission ending theme              
+0312_ending.npsf        Ending credits                          
+0313_m18title.npsf      M18: ZERO                               Plays during ZERO's mission title card
+0314_i17a2_bgm.npsf     M18: ZERO                               Cutscene - Pixy appears
