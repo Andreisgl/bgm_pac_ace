@@ -1,5 +1,5 @@
 # Tool Specific files, directories and extensions:
-BGM/
+# BGM/
 *.PAC
 *.npsf
 *.acd
@@ -7,9 +7,12 @@ BGM/
 *.wav
 *.exe
 *.bat
+*.m4a
 
-Organizer Projects/
--Organizer Projects/ACZ_RADIOUSA
+# File Organizer/Organizer Projects/
+File Organizer/Organizer Projects/
+
+
 
 # Others:
 
