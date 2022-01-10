@@ -355,29 +355,7 @@ def check_file_data_list(): # Checks 'save_file_data_list' and creates an index 
             fdl_validation_index[i] = 2
 
     
-
-
-def separate_by_parameter(fdl_list): # Separates files by chosen parameter.    
-    global PARAMETER_LIST
-    global fdl_validation_index
-    reference_parameter = 0 # Parameter index in "PARAMETER_LIST" to be checked.
-
-    # Local "file_list" and "file_data_list" like lists and files to be created for
-        # each folder.
-    fl = []
-    fdl = []
-    save_fl = []
-    save_fdl = []
-
-    # List contains all parameter values in file for given parameter.
-    #Creates a folder for each value, if not empty.
-    parameter_value_index = []
-    parameter_value_buffer = ''
-
-    valid_answer = False
-
-    check_file_data_list() # Updates validation index.
-
+def param_separator_temp_input():
     print('Separate files by parameter in folders. Maintains base folder intact.')
     print('Choose which parameter to separate by: \n----------')
     for g in range(len(PARAMETER_LIST)):
@@ -397,6 +375,30 @@ def separate_by_parameter(fdl_list): # Separates files by chosen parameter.
             valid_answer = False
         else:
             valid_answer = True
+
+# "reference_parameter": Parameter index in "PARAMETER_LIST" to be checked.
+def separate_by_parameter(fdl_list, f_list, CURRENT_FOLDER, reference_parameter): # Separates files by chosen parameter.    
+    global PARAMETER_LIST
+    global fdl_validation_index
+    
+
+    # Local "file_list" and "file_data_list" like lists and files to be created for
+        # each folder.
+    fl = []
+    fdl = []
+    save_fl = 'FL.txt'
+    save_fdl = 'FDL.txt'
+
+    # List contains all parameter values in file for given parameter.
+    #Creates a folder for each value, if not empty.
+    parameter_value_index = []
+    parameter_value_buffer = ''
+
+    valid_answer = False
+
+    check_file_data_list() # Updates validation index.
+
+    
     
     
     for i in range(number_of_files):
@@ -413,18 +415,37 @@ def separate_by_parameter(fdl_list): # Separates files by chosen parameter.
     
     # Create folders and copy files for each parameter value.
 
-        buffer_folder_path = WORK_FOLDER + '/' + PARAMETER_LIST[reference_parameter] + '/'
+        buffer_folder_path = CURRENT_FOLDER + '/' + PARAMETER_LIST[reference_parameter] + '/'
         if not os.path.exists(buffer_folder_path):
             os.mkdir(buffer_folder_path)
 
     for p in range(len(parameter_value_index)):
-        buffer_folder_path = WORK_FOLDER + '/' + PARAMETER_LIST[reference_parameter] + '/' + parameter_value_index[p]
+        buffer_folder_path = CURRENT_FOLDER + '/' + PARAMETER_LIST[reference_parameter] + '/' + parameter_value_index[p]
         if not os.path.exists(buffer_folder_path):
             os.mkdir(buffer_folder_path)
         for l in range(number_of_files):
             parameter_value_buffer = fdl_parameter_parser(l, fdl_list)[reference_parameter]
             if parameter_value_buffer == parameter_value_index[p]:
-                shutil.copy(BASE_DIRECTORY + '/' + file_list[l], buffer_folder_path)
+                shutil.copy(BASE_DIRECTORY + '/' + f_list[l], buffer_folder_path)
+                
+                # Append file data to local lists:
+                fl.append(f_list[l])
+                fdl.append(fdl_list[l])
+        
+        
+        
+        # Save fl and fdl files for this folder.
+        with open(buffer_folder_path + '/' + save_fl, 'w') as sfl:
+            for i in range(len(fl)):
+                sfl.write(fl[i] + '\n' )
+        with open(buffer_folder_path + '/' + save_fdl, 'w') as sfdl:
+            for i in range(len(fdl)):
+                sfdl.write(fdl[i] + '\n' )
+        
+        # Empty lists before proceeding.
+        fl = []
+        fdl = []
+        print('check')
     
 
             
@@ -435,6 +456,7 @@ def separate_by_parameter(fdl_list): # Separates files by chosen parameter.
 
 init_project()
 
-separate_by_parameter(file_data_list)
+# param_separator_temp_input()
+separate_by_parameter(file_data_list, file_list, WORK_FOLDER, 0)
 # work_on_files()
 save_project()
