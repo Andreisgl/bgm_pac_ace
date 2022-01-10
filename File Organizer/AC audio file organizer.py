@@ -377,7 +377,7 @@ def param_separator_temp_input():
             valid_answer = True
 
 # "reference_parameter": Parameter index in "PARAMETER_LIST" to be checked.
-def separate_by_parameter(fdl_list, f_list, CURRENT_FOLDER, reference_parameter): # Separates files by chosen parameter.    
+def separate_by_parameter(fdl_list, f_list, CURRENT_FOLDER, reference_parameter, folder): # Separates files by chosen parameter.    
     global PARAMETER_LIST
     global fdl_validation_index
     
@@ -423,16 +423,14 @@ def separate_by_parameter(fdl_list, f_list, CURRENT_FOLDER, reference_parameter)
         buffer_folder_path = CURRENT_FOLDER + '/' + PARAMETER_LIST[reference_parameter] + '/' + parameter_value_index[p]
         if not os.path.exists(buffer_folder_path):
             os.mkdir(buffer_folder_path)
-        for l in range(number_of_files):
+        for l in range(len(fl)):
             parameter_value_buffer = fdl_parameter_parser(l, fdl_list)[reference_parameter]
             if parameter_value_buffer == parameter_value_index[p]:
-                shutil.copy(BASE_DIRECTORY + '/' + f_list[l], buffer_folder_path)
+                shutil.copy(folder + '/' + f_list[l], buffer_folder_path)
                 
                 # Append file data to local lists:
                 fl.append(f_list[l])
                 fdl.append(fdl_list[l])
-        
-        
         
         # Save fl and fdl files for this folder.
         with open(buffer_folder_path + '/' + save_fl, 'w') as sfl:
@@ -445,7 +443,8 @@ def separate_by_parameter(fdl_list, f_list, CURRENT_FOLDER, reference_parameter)
         # Empty lists before proceeding.
         fl = []
         fdl = []
-        print('check')
+
+    separate_by_parameter(fdl_list, f_list, buffer_folder_path, 1, CURRENT_FOLDER)
     
 
             
@@ -457,6 +456,6 @@ def separate_by_parameter(fdl_list, f_list, CURRENT_FOLDER, reference_parameter)
 init_project()
 
 # param_separator_temp_input()
-separate_by_parameter(file_data_list, file_list, WORK_FOLDER, 0)
+separate_by_parameter(file_data_list, file_list, WORK_FOLDER, 0, BASE_DIRECTORY)
 # work_on_files()
 save_project()
